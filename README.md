@@ -1,6 +1,3 @@
 # DataStructures
-#2 
-#3
-#4
-#5
-#6
+# Added LinkedList program
+# Added BinaryTree program
