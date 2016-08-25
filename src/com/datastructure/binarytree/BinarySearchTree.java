@@ -87,6 +87,23 @@ public class BinarySearchTree<E> {
 
 	}
 
+	
+	void traverseLevelWise(){
+		
+	}
+	
+	
+	
+	void printNode(Node<E> node) {
+		if (node == null)
+			return;
+		if (node.getLeft() != null) {
+			System.out.print(" " + node.getLeft().getData());
+		} else if (node.getRight() != null) {
+			System.out.print(" " + node.getRight().getData());
+		}
+	}
+
 	Integer findHeight(Node<E> root) {
 
 		if (root == null)
@@ -139,7 +156,7 @@ public class BinarySearchTree<E> {
 	void preorderTraverse(Node<E> root) {
 		if (root == null)
 			return;
-		System.out.print(" "+root.getData());
+		System.out.print(" " + root.getData());
 		preorderTraverse(root.getLeft());
 		postorderTraverse(root.getRight());
 	}
@@ -148,7 +165,7 @@ public class BinarySearchTree<E> {
 		if (root == null)
 			return;
 		inorderTraverse(root.getLeft());
-		System.out.print(" "+root.getData());
+		System.out.print(" " + root.getData());
 		inorderTraverse(root.getRight());
 	}
 
@@ -157,7 +174,7 @@ public class BinarySearchTree<E> {
 			return;
 		postorderTraverse(root.getLeft());
 		postorderTraverse(root.getRight());
-		System.out.print(" "+root.getData());
+		System.out.print(" " + root.getData());
 	}
 
 	public static void main(String[] args) {
@@ -189,14 +206,13 @@ public class BinarySearchTree<E> {
 		bst.traverseInOrder(bst.getRoot());
 
 		System.out.println("find height  :  " + bst.findHeight(bst.root));
-		
+
 		bst.preorderTraverse(bst.getRoot());
 		System.out.println();
 		bst.inorderTraverse(bst.getRoot());
 		System.out.println();
 		bst.postorderTraverse(bst.getRoot());
 		System.out.println();
-		
 
 	}
 
