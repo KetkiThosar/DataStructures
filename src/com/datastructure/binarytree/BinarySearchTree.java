@@ -87,6 +87,14 @@ public class BinarySearchTree<E> {
 
 	}
 
+	Integer findHeight(Node<E> root) {
+
+		if (root == null)
+			return -1;
+		return Integer.max(findHeight(root.getLeft()),
+				findHeight(root.getRight())) + 1;
+	}
+
 	Node<E> deleteNode(Node<E> root, Integer data) {
 		if (root == null) {
 			return root;
@@ -107,14 +115,14 @@ public class BinarySearchTree<E> {
 			else if (root.getLeft() == null) {
 				Node<E> temp = root;
 				root = root.getRight();
-				temp=null;
-				
+				temp = null;
+
 				// if it has only left child
 			} else if (root.getRight() == null) {
 				Node<E> temp = root;
-				root= root.getLeft();
+				root = root.getLeft();
 				temp = null;
-				
+
 			}
 			// node with 2 children
 			else {
@@ -128,6 +136,30 @@ public class BinarySearchTree<E> {
 
 	}
 
+	void preorderTraverse(Node<E> root) {
+		if (root == null)
+			return;
+		System.out.print(" "+root.getData());
+		preorderTraverse(root.getLeft());
+		postorderTraverse(root.getRight());
+	}
+
+	void inorderTraverse(Node<E> root) {
+		if (root == null)
+			return;
+		inorderTraverse(root.getLeft());
+		System.out.print(" "+root.getData());
+		inorderTraverse(root.getRight());
+	}
+
+	void postorderTraverse(Node<E> root) {
+		if (root == null)
+			return;
+		postorderTraverse(root.getLeft());
+		postorderTraverse(root.getRight());
+		System.out.print(" "+root.getData());
+	}
+
 	public static void main(String[] args) {
 
 		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
@@ -139,7 +171,6 @@ public class BinarySearchTree<E> {
 		bst.insertNode(40);
 		bst.insertNode(24);
 		bst.insertNode(41);
-		
 
 		System.out.println(bst.isPresent(bst.getRoot(), 15));
 		System.out.println(bst.isPresent(bst.getRoot(), 10));
@@ -152,10 +183,20 @@ public class BinarySearchTree<E> {
 
 		System.out.println("Elements in Tree");
 		bst.traverseInOrder(bst.getRoot());
-		
+
 		bst.deleteNode(bst.getRoot(), 25);
 		System.out.println("Elements in Tree after removal");
 		bst.traverseInOrder(bst.getRoot());
+
+		System.out.println("find height  :  " + bst.findHeight(bst.root));
+		
+		bst.preorderTraverse(bst.getRoot());
+		System.out.println();
+		bst.inorderTraverse(bst.getRoot());
+		System.out.println();
+		bst.postorderTraverse(bst.getRoot());
+		System.out.println();
+		
 
 	}
 
