@@ -102,9 +102,9 @@ public class BinarySearchTree<E> {
 	Integer findHeight(Node<E> root) {
 
 		if (root == null)
-			return -1;
+			return 0;
 		return Integer.max(findHeight(root.getLeft()),
-				findHeight(root.getRight())) + 1;
+				findHeight(root.getRight())) +1;
 	}
 
 	Node<E> deleteNode(Node<E> root, Integer data) {
