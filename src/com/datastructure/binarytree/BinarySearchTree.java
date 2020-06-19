@@ -88,6 +88,24 @@ public class BinarySearchTree<E> {
 		}
 
 	}
+	
+	public int kthSmallest(Node<E> root, int k) {
+        
+        List<Integer> arrayList = new ArrayList<>();
+        getSortedElems(root,k,arrayList);  
+        System.out.println("ArrayList "+arrayList.toString());
+        return 0;
+    }
+    
+    public void getSortedElems(Node<E> root,int k , List<Integer> arrayList){
+        
+        if(root==null){
+            return;
+        }
+        getSortedElems(root.getLeft(),k,arrayList);
+        arrayList.add(root.getData());
+        getSortedElems(root.getRight(),k,arrayList);
+    }
 
 	void printNode(Node<E> node) {
 		if (node == null)
@@ -158,6 +176,7 @@ public class BinarySearchTree<E> {
 		postorderTraverse(root.getRight());
 	}
 
+	//inorder traverse prints node sorted in ascending order .
 	void inorderTraverse(Node<E> root) {
 		if (root == null)
 			return;
@@ -173,6 +192,41 @@ public class BinarySearchTree<E> {
 		postorderTraverse(root.getRight());
 		System.out.print(" " + root.getData());
 	}
+	
+	
+	/**
+	 * What is inorder successor prints the next highest number 
+	 * 
+	 * @param root
+	 * @return
+	 */
+	
+	Node<E> inorderSuccessor(Node<E> root,int data) {
+		if (root == null)
+			return null;
+		
+		Node<E> node = getNode(root,data);
+		if (node!=null&&node.getRight() != null) {
+			node = node.getRight();
+			while (node.getLeft() != null) {
+				node = node.getLeft();
+			} // end of while loop
+		} // end of if block
+		return node;
+	}
+	
+	Node<E> getNode(Node<E> node, Integer data) {
+		if (node == null)
+			return null;
+		if (node.getData() == data)
+			return node;
+		else if (data < node.getData()) {
+			return getNode(node.getLeft(), data);
+		} else if (data > node.getData()) {
+			return getNode(node.getRight(), data);
+		}
+		return null;
+	}
 
 	public static void main(String[] args) {
 
@@ -185,13 +239,18 @@ public class BinarySearchTree<E> {
 		bst.insertNode(40);
 		bst.insertNode(24);
 		bst.insertNode(41);
-
+		
+		bst.kthSmallest(bst.getRoot(), 8);
+		bst.inorderTraverse(bst.getRoot());
+		System.out.println();
 		System.out.println(bst.isPresent(bst.getRoot(), 15));
 		System.out.println(bst.isPresent(bst.getRoot(), 10));
 		System.out.println(bst.isPresent(bst.getRoot(), 8));
 		System.out.println(bst.isPresent(bst.getRoot(), 4));
 		System.out.println(bst.isPresent(bst.getRoot(), 25));
 		System.out.println(bst.isPresent(bst.getRoot(), 26));
+		
+		System.out.println("Inorder successor: " +bst.inorderSuccessor(bst.root,10).getData());
 		
 		System.out.println("min:   " + bst.findMin(bst.getRoot()).getData());
 		System.out.println("max:   " + bst.findMax(bst.getRoot()).getData());
@@ -217,7 +276,6 @@ public class BinarySearchTree<E> {
 		bst.traverseLevelWise(bst.getRoot());
 		System.out.println();
 		
-
 	}
 
 }
