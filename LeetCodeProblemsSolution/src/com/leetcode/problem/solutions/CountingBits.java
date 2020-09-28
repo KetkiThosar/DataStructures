@@ -2,7 +2,10 @@ package com.leetcode.problem.solutions;
 
 public class CountingBits {
 
-	/*When it comes to even numbers, i.e, 2,4,6,8, their binary should be like '10', '100', '110', '1000' so one notable difference is their unit digit is always 0, which means when you call >> 1- shift one bit rightwards and also means dividing by 2- would cause no change to the count of '1' in the binary string.
+	/*When it comes to even numbers, i.e, 2,4,6,8, their binary should be like '10', '100', '110', '1000'
+	 *  so one notable difference is their unit digit is always 0,
+	 *  which means when you call >> 1- shift one bit rightwards and also means dividing by 2- 
+	 *  would cause no change to the count of '1' in the binary string.
 
 	Vice versa, when you meet odd numbers,
 	 shifting one bit rightwards always eliminates one '1' digit from original binary string,

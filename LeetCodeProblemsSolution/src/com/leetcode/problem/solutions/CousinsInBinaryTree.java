@@ -1,5 +1,6 @@
 package com.leetcode.problem.solutions;
 
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -30,6 +31,7 @@ public class CousinsInBinaryTree {
 	}
 
 	public boolean isCousins(TreeNode root, int A, int B) {
+	//	Deque<TreeNode> stack = new ArrayDeque<>();
 		if (root == null)
 			return false;
 		Queue<TreeNode> queue = new LinkedList<>();
@@ -44,11 +46,9 @@ public class CousinsInBinaryTree {
 					isAexist = true;
 				if (cur.val == B)
 					isBexist = true;
+				//This condition to check if they are brothers
 				if (cur.left != null && cur.right != null) {
-					if (cur.left.val == A && cur.right.val == B) {
-						return false;
-					}
-					if (cur.left.val == B && cur.right.val == A) {
+					if ((cur.left.val == A && cur.right.val == B) || (cur.left.val == B && cur.right.val == A)) {
 						return false;
 					}
 				}
@@ -61,8 +61,6 @@ public class CousinsInBinaryTree {
 			}//end of for loop
 			if (isAexist && isBexist)
 				return true;
-			else if(isAexist || isBexist)
-				return false;
 		}
 		return false;
 	}

@@ -1,11 +1,11 @@
 package com.leetcode.problem.solutions;
 
-public class FindJudge {
+public class FindTheTownJudge {
 
 	public static void main(String[] args) {
 		int N = 3;
 		int[][] trust = { { 1, 2 }, { 2, 3 } };
-		System.out.println(new FindJudge().findJudge(N, trust));
+		System.out.println(new FindTheTownJudge().findJudge(N, trust));
 
 	}
 

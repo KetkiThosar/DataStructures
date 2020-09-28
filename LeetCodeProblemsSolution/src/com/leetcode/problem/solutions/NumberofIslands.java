@@ -3,8 +3,12 @@ package com.leetcode.problem.solutions;
 public class NumberofIslands {
 
 	public static void main(String[] args) {
-		char[][] arr = { { '1', '1', '0', '0', '0' }, { '1', '1', '0', '0', '0' }, { '0', '0', '1', '0', '0' },
-				{ '0', '0', '0', '1', '1' } };
+		char[][] arr = { 
+				{ '1', '1', '0', '0', '1' },
+				{ '1', '1', '0', '0', '0' }, 
+				{ '0', '0', '1', '0', '0' },
+				{ '0', '0', '0', '1', '1' } 
+				};
 		System.out.println(new NumberofIslands().numIslands(arr));
 	}
 

@@ -1,7 +1,16 @@
 package com.leetcode.problem.solutions;
 
-public class CanJump {
+public class JumpGame {
 	public boolean canJump(int[] nums) {
+		/**
+		 * when you are at 
+		 * 
+		 * 
+		 */
+		
+		
+//TODO some explanation is required here 		
+		
 		if (nums == null || nums.length == 0) {
 			return false;
 		}
@@ -16,6 +25,6 @@ public class CanJump {
 	}
 
 	public static void main(String[] args) {
-		new CanJump().canJump(new int [] {3,2,2,0,1,4});
+		System.out.println(new JumpGame().canJump(new int [] {3,2,2,0,1,4}));
 	}
 }

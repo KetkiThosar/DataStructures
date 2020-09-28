@@ -116,7 +116,17 @@ public class ValidateIPAddress {
 
 	public static void main(String[] args) {
 		String IP = "192.0.0.1";
-		System.out.println(new ValidateIPAddress().validIPAddress(IP));
+		long timeout = 1*60*1000;
+		long first = System.currentTimeMillis();
+		System.out.println(first);
+		System.out.println((System.currentTimeMillis()>=first+timeout)?"now ":"not yet");
+		try {
+			Thread.sleep(timeout);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println((System.currentTimeMillis()>=first+timeout)?"now":"not yet");
+		System.out.println(System.currentTimeMillis()+timeout);
 	}
 
 }

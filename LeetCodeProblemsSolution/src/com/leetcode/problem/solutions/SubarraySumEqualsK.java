@@ -24,15 +24,22 @@ public class SubarraySumEqualsK {
 		if (nums == null || nums.length == 0) {
 			return 0;
 		}
-		int sum = 0, max = 0;
-		Map<Integer, Integer> freq = new HashMap<>();
-		for (int i = 0; i < nums.length; i++) {
-			sum = k - nums[i];
-			if (freq.containsKey(sum)) {
-				max = Math.max(max, i - freq.get(sum));
-			}
-		}
-		return max;
-	}
+		 Map<Integer,Integer> freq = new HashMap<>();
+	      freq.put(0,1);
+	      int sum = 0 ,count = 0;  
+	      for(int i = 0 ; i < nums.length ; i++){
+	        sum+=nums[i];
+	        if(freq.containsKey(sum - k)){
+	            count += freq.get(sum-k);
+	        }
+	        freq.put(sum,freq.getOrDefault(sum,0)+1);  
+	      }
+	        return count;
+	    }
 
+	
+	public static void main(String[] args) {
+		int [] nums = {3,4,7,2,-3,1,4,2};
+		new SubarraySumEqualsK().subarraySum(nums, 7);
+	}
 }
